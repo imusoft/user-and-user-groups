@@ -1,8 +1,11 @@
 const express = require("express");
 const helmet = require('helmet');
+const log = require("./log");
 
-const add = require("./add")
-const log = require("./log")
+const get = require("./get")
+const add = require("./add");
+const edit = require("./edit");
+const del = require("./delete");
 
 module.exports = function (app) {
   app.use(log);
@@ -23,5 +26,8 @@ module.exports = function (app) {
   })
 
   app.use(express.json({ limit: "50mb" })); //100kb by default
+  app.use("/get", get);
   app.use("/add", add);
+  app.use("/edit", edit);
+  app.use("/delete", del);
 };

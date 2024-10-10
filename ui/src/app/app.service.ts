@@ -8,8 +8,20 @@ export class AppService {
 
   constructor(private http: HttpClient) { }
 
-  checkData(body: any) {
+  addData(body: any) {
     return this.http.post("http://localhost:3000/add/", body)
+  }
+
+  editData(body: any) {
+    return this.http.post("http://localhost:3000/edit/", body)
+  }
+
+  deleteData(body: any) {
+    return this.http.post("http://localhost:3000/delete/", body)
+  }
+
+  getData() {
+    return this.http.post("http://localhost:3000/get/", {})
   }
 
 }

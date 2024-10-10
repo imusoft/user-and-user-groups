@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppService } from './app.service';
 
 @Component({
@@ -6,9 +6,13 @@ import { AppService } from './app.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor (private appService: AppService) {}
+
+  ngOnInit(): void {
+    this.refresh();
+  }
 
   title = 'ui';
   email: any = "";
@@ -16,24 +20,31 @@ export class AppComponent {
   editRow: number = 0;
   option: any = ""
 
-  userData = [{
-    email: "imusoft@gmail.com",
-    group: "tech"
-  }]
+  userData: any;
 
-  userGroup = [
-    "tech"
-  ]
+  userGroup: any[] = [];
 
   checkGroup(val: any) {
     let check = this.userData.filter( (x: any) => {
       this.userGroup.includes(x)
     } )
+    console.log(check)
     if (!check.length) {
       let index = this.userGroup.indexOf(val)
       this.userGroup.splice(index, 1)
     }
     console.log(check)
+  }
+
+  refresh() {
+    this.appService.getData().subscribe( (data: any) => {
+      this.userGroup = [];
+      this.userData = data;
+      this.userData.map((x: any) => {
+        if (!this.userGroup.includes(x.group))
+          this.userGroup.push(x.group)
+      });
+    })
   }
 
   addUser() {
@@ -45,7 +56,7 @@ export class AppComponent {
     !!this.group && !this.userGroup.includes(this.group) && this.userGroup.push(this.group);
     this.email = "";
     this.group = "";
-    this.appService.checkData(this.userData).subscribe( data => {
+    this.appService.addData(this.userData[this.userData.length - 1]).subscribe( data => {
       console.log(data)
     })
     this.option = ""
@@ -73,13 +84,13 @@ export class AppComponent {
     this.userData[this.editRow-1].email = this.email
     this.userData[this.editRow-1].group = this.group
     this.group && !this.userGroup.includes(this.group) && this.userGroup.push(this.group)
+    this.appService.editData(this.userData[this.editRow-1]).subscribe( data => {
+      this.refresh()
+    })
     this.email = "";
     this.group = "";
     this.editRow = 0;
     this.option = ""
-    this.appService.checkData(this.userData).subscribe( data => {
-      console.log(data)
-    })
   }
 
   changeEditRow(i: any) {
@@ -88,11 +99,8 @@ export class AppComponent {
   }
 
   delete(i: any) {
-    let tempGroup = this.userData[i].group;
-    this.userData.splice(i, 1)
-    tempGroup && this.checkGroup(tempGroup)
-    this.appService.checkData(this.userData).subscribe( data => {
-      console.log(data)
+    this.appService.deleteData(this.userData[i]).subscribe( data => {
+      this.refresh()
     })
   }
 }

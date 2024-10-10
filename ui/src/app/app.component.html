@@ -180,7 +180,7 @@
     <div class="left-side">
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon3">Enter Email Id</span>
-        <input type="text" class="form-control" [(ngModel)]="email" id="emailId" aria-describedby="basic-addon3">
+        <input type="text" class="form-control" [(ngModel)]="email" id="emailId" aria-describedby="basic-addon3" [readonly]="editRow">
       </div>
       <hr>
       <div class="input-group mb-3">

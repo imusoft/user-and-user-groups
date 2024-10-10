@@ -189,7 +189,7 @@
       </div>
       OR select from the options below:
       <div class="form-check" *ngFor="let group of userGroup; let i = index">
-        <input class="form-check-input" [(ngModel)]="option" type="radio" id="group{{i+1}}" value="{{group}}" [checked]="option">
+        <input class="form-check-input" [(ngModel)]="option" type="radio" id="group{{i+1}}" value="{{group}}" (click)="setGroup(i)" [checked]="option">
         <label class="form-check-label" for="group{{i+1}}">{{group}}</label>
       </div>
       <div class="mt-5">

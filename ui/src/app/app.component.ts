@@ -8,9 +8,7 @@ import { AppService } from './app.service';
 })
 export class AppComponent {
 
-  constructor (private appService: AppService) {
-
-  }
+  constructor (private appService: AppService) {}
 
   title = 'ui';
   email: any = "";
@@ -50,6 +48,7 @@ export class AppComponent {
     this.appService.checkData(this.userData).subscribe( data => {
       console.log(data)
     })
+    this.option = ""
   }
 
   changeEdit(val: boolean) {
@@ -63,6 +62,10 @@ export class AppComponent {
       this.email = this.userData[this.editRow-1].email
       this.group = this.userData[this.editRow-1].group
     }
+  }
+
+  setGroup(i: any) {
+    this.group = this.userGroup[i]
   }
 
   edit() {

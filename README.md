@@ -43,3 +43,7 @@ nodemon app.js
 
 # Scope
 
+This project was intended to apply features for adding , editing and deleting user info with their respective optional groups. with most of the functionality added in the UI itself, not a lot of crud operations was included in the backend.
+
+However, error handling and logging was included.
+

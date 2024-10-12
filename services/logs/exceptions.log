@@ -1,0 +1,111 @@
+{
+  error: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+      at ServerResponse.setHeader (node:_http_outgoing:659:11)
+      at ServerResponse.header (C:\Users\Imran\Documents\user-and-user-groups\services\node_modules\express\lib\response.js:794:10)
+      at ServerResponse.send (C:\Users\Imran\Documents\user-and-user-groups\services\node_modules\express\lib\response.js:174:12)
+      at ServerResponse.json (C:\Users\Imran\Documents\user-and-user-groups\services\node_modules\express\lib\response.js:278:15)
+      at ServerResponse.send (C:\Users\Imran\Documents\user-and-user-groups\services\node_modules\express\lib\response.js:162:21)
+      at C:\Users\Imran\Documents\user-and-user-groups\services\edit.js:22:33
+      at FSReqCallback.oncomplete (node:fs:187:23) {
+    code: 'ERR_HTTP_HEADERS_SENT'
+  },
+  level: 'error',
+  message: 'uncaughtException: Cannot set headers after they are sent to the client\n' +
+    'Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n' +
+    '    at ServerResponse.setHeader (node:_http_outgoing:659:11)\n' +
+    '    at ServerResponse.header (C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\node_modules\\express\\lib\\response.js:794:10)\n' +
+    '    at ServerResponse.send (C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\node_modules\\express\\lib\\response.js:174:12)\n' +
+    '    at ServerResponse.json (C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\node_modules\\express\\lib\\response.js:278:15)\n' +
+    '    at ServerResponse.send (C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\node_modules\\express\\lib\\response.js:162:21)\n' +
+    '    at C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\edit.js:22:33\n' +
+    '    at FSReqCallback.oncomplete (node:fs:187:23)',
+  stack: 'Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n' +
+    '    at ServerResponse.setHeader (node:_http_outgoing:659:11)\n' +
+    '    at ServerResponse.header (C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\node_modules\\express\\lib\\response.js:794:10)\n' +
+    '    at ServerResponse.send (C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\node_modules\\express\\lib\\response.js:174:12)\n' +
+    '    at ServerResponse.json (C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\node_modules\\express\\lib\\response.js:278:15)\n' +
+    '    at ServerResponse.send (C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\node_modules\\express\\lib\\response.js:162:21)\n' +
+    '    at C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\edit.js:22:33\n' +
+    '    at FSReqCallback.oncomplete (node:fs:187:23)',
+  exception: true,
+  date: 'Sat Oct 12 2024 14:00:52 GMT+0530 (India Standard Time)',
+  process: {
+    pid: 53080,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\Imran\\Documents\\user-and-user-groups\\services',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v20.15.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\app.js'
+    ],
+    memoryUsage: {
+      rss: 46878720,
+      heapTotal: 9916416,
+      heapUsed: 9368488,
+      external: 2126145,
+      arrayBuffers: 17024
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 176628.296 },
+  trace: [
+    {
+      column: 11,
+      file: 'node:_http_outgoing',
+      function: 'ServerResponse.setHeader',
+      line: 659,
+      method: 'setHeader',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\node_modules\\express\\lib\\response.js',
+      function: 'ServerResponse.header',
+      line: 794,
+      method: 'header',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\node_modules\\express\\lib\\response.js',
+      function: 'ServerResponse.send',
+      line: 174,
+      method: 'send',
+      native: false
+    },
+    {
+      column: 15,
+      file: 'C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\node_modules\\express\\lib\\response.js',
+      function: 'ServerResponse.json',
+      line: 278,
+      method: 'json',
+      native: false
+    },
+    {
+      column: 21,
+      file: 'C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\node_modules\\express\\lib\\response.js',
+      function: 'ServerResponse.send',
+      line: 162,
+      method: 'send',
+      native: false
+    },
+    {
+      column: 33,
+      file: 'C:\\Users\\Imran\\Documents\\user-and-user-groups\\services\\edit.js',
+      function: null,
+      line: 22,
+      method: null,
+      native: false
+    },
+    {
+      column: 23,
+      file: 'node:fs',
+      function: 'FSReqCallback.oncomplete',
+      line: 187,
+      method: 'oncomplete',
+      native: false
+    }
+  ],
+  timestamp: '2024-10-12T08:30:52.198Z'
+}

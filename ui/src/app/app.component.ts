@@ -47,18 +47,25 @@ export class AppComponent implements OnInit {
     })
   }
 
+  hardRefresh(res: any) {
+    this.userGroup = [];
+    this.userData = res;
+    this.userData.map((x: any) => {
+      if (!this.userGroup.includes(x.group))
+        this.userGroup.push(x.group)
+    });
+  }
+
   addUser() {
     if (!this.email) return alert("Email is Mandatory");
     let user: any = {}
     user.email = this.email;
     user.group = this.group
-    this.userData.push(user)
-    !!this.group && !this.userGroup.includes(this.group) && this.userGroup.push(this.group);
+    this.appService.addData(user).subscribe( data => {
+      this.hardRefresh(data)
+    })
     this.email = "";
     this.group = "";
-    this.appService.addData(this.userData[this.userData.length - 1]).subscribe( data => {
-      console.log(data)
-    })
     this.option = ""
   }
 
@@ -81,11 +88,12 @@ export class AppComponent implements OnInit {
 
   edit() {
     this.checkGroup(this.group)
-    this.userData[this.editRow-1].email = this.email
-    this.userData[this.editRow-1].group = this.group
-    this.group && !this.userGroup.includes(this.group) && this.userGroup.push(this.group)
-    this.appService.editData(this.userData[this.editRow-1]).subscribe( data => {
-      this.refresh()
+    let user = {
+      email: this.email,
+      group: this.group
+    }
+    this.appService.editData(user).subscribe( data => {
+      this.hardRefresh(data)
     })
     this.email = "";
     this.group = "";
@@ -100,7 +108,7 @@ export class AppComponent implements OnInit {
 
   delete(i: any) {
     this.appService.deleteData(this.userData[i]).subscribe( data => {
-      this.refresh()
+      this.hardRefresh(data)
     })
   }
 }
